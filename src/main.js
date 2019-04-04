@@ -14,8 +14,8 @@ window.addEventListener('DOMContentLoaded', function onReadyHandler () {
 
   const cardLimit = 52;
   const kingLimit = 4;
-  const numCardsToDraw = 2;
-  const intervalTime = 1000;
+  const numCardsToDraw = 4
+  const intervalTime = 500;
   const shadowRoot = document.querySelector('#app-root').attachShadow({mode: 'open'})
   shadowRoot.appendChild(buildCardColumns());
 

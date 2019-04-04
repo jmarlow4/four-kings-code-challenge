@@ -4,11 +4,12 @@ export class ColumnsContainerComponent extends HTMLElement {
     const _styles = `{
       display: flex;
       flex-direction: row;
-      justify-content: space-evenly;
+      justify-content: space-between;
       margin-top: 40px;
       align-items: stretch;
       margin: 40px auto 0;
       max-width: 1200px;
+      min-width: 884px;
     }`
   
     const _template = `
