@@ -6,10 +6,16 @@ export class DeckService {
   /**
    * Makes initial call to the DeckOfCards API to get a unique deck ID
    */
-  initDeck () {
-    return this[_apiRequest]('GET', 'https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1')
-    .then( res => JSON.parse(res.response))
+  async getDeckId () {
+    const res = await this[_apiRequest]('GET', 'https://deckofcardsapi.com/api/deck/new/draw/?count=0');
+    return JSON.parse(res.response).deck_id;
   }
+
+  async drawTwoCards (deckId) {
+    const res = await this[_apiRequest]('GET', `https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=2`);
+    return JSON.parse(res.response).cards;
+  }
+
   /**
    * Wraps a normal XHR request in a promise and makes it easier
    * to work with. Strange syntax is because of symbol pointer,

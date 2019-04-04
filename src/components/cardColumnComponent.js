@@ -1,4 +1,3 @@
-const _suit = Symbol('_suit');
 const _symbol = Symbol('_symbol');
 const _isRed = Symbol('_isRed');
 
@@ -11,7 +10,6 @@ export class CardColumnComponent extends HTMLElement {
       display: flex;
       flex-direction: column;
       align-items: stretch;
-      justify-content: space-evenly;
       padding: 16px;
       margin: 16px;
       width: 100%;
@@ -38,10 +36,6 @@ export class CardColumnComponent extends HTMLElement {
 
     const shadowRoot = this.attachShadow({mode: 'open'});
     shadowRoot.appendChild(tmpl.content.cloneNode(true));
-  }
-
-  get [_suit] () {
-    return this.getAttribute('suit')
   }
 
   get [_symbol] () {

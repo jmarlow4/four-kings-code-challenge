@@ -9,7 +9,7 @@ export class ColumnsContainerComponent extends HTMLElement {
     }`
   
     const _template = `
-      <style>:host ${_styles}</style>
+      <style>:host ${ _styles }</style>
       <slot></slot>
     `
 

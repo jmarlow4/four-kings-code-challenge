@@ -4,7 +4,7 @@
 
 Use the endpoint: 
 
-`https://deckofcardsapi.com/api/deck/new/draw/?count=0'
+`https://deckofcardsapi.com/api/deck/new/draw/?count=0`
 
 to shuffle a new deck of cards. This will return a deck_id property which you will then use to draw 2 cards from the deck. Use the endpoint 
 

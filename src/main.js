@@ -1,9 +1,14 @@
 import { DeckService } from './services/index.js';
-import { ColumnsContainerComponent, CardColumnComponent } from './components/index.js';
+import {
+  ColumnsContainerComponent,
+  CardColumnComponent,
+  CardComponent
+} from './components/index.js';
 import { SuitsEnum } from './enums/index.js';
 
-window.customElements.define('card-column', CardColumnComponent);
 window.customElements.define('columns-container', ColumnsContainerComponent);
+window.customElements.define('card-column', CardColumnComponent);
+window.customElements.define('card-element', CardComponent);
 
 window.addEventListener('DOMContentLoaded', function onReadyHandler () {
 
@@ -15,10 +20,35 @@ window.addEventListener('DOMContentLoaded', function onReadyHandler () {
   function main () {
 
     const deckService = new DeckService();
-    const state = {
-      deckId: null
-    }
-    deckService.initDeck().then( res => state.deckId = res.deck_id)
+
+    deckService.getDeckId()
+      .then( deckId => {
+        let kingCount = 0;
+        let cardCount = 0;
+        const loopInterval = setInterval( () => {
+          if (cardCount >= 52 || kingCount >= 4) {
+            clearInterval(loopInterval)
+          } else {
+            deckService.drawTwoCards(deckId)
+            .then( (cards) => {
+              cards.map( card => {
+                const parentColumnSelector =
+                  `card-column[suit=${SuitsEnum[card.suit].name}]`;
+                const parentColumn = shadowRoot.querySelector(parentColumnSelector);
+                const cardElem = document.createElement('card-element');
+                cardElem.setAttribute('suit', card.suit);
+                cardElem.setAttribute('value', card.value);
+                parentColumn.appendChild(cardElem);
+                cardCount++;
+                if (card.value === 'KING') {
+                  kingCount++;
+                }
+              })
+            })
+          }
+          console.log(kingCount)
+        }, 1000)
+      })
   }
 
   function buildCardColumns() {
