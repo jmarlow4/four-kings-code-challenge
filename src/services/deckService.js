@@ -11,8 +11,8 @@ export class DeckService {
     return JSON.parse(res.response).deck_id;
   }
 
-  async drawTwoCards (deckId) {
-    const res = await this[_apiRequest]('GET', `https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=2`);
+  async drawCards (deckId, numCards) {
+    const res = await this[_apiRequest]('GET', `https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=${numCards}`);
     return JSON.parse(res.response).cards;
   }
 

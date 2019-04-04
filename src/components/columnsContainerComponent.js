@@ -7,6 +7,8 @@ export class ColumnsContainerComponent extends HTMLElement {
       justify-content: space-evenly;
       margin-top: 40px;
       align-items: stretch;
+      margin: 40px auto 0;
+      max-width: 1200px;
     }`
   
     const _template = `

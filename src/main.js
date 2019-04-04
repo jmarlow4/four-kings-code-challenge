@@ -14,6 +14,7 @@ window.addEventListener('DOMContentLoaded', function onReadyHandler () {
 
   const cardLimit = 52;
   const kingLimit = 4;
+  const numCardsToDraw = 2;
   const intervalTime = 1000;
   const shadowRoot = document.querySelector('#app-root').attachShadow({mode: 'open'})
   shadowRoot.appendChild(buildCardColumns());
@@ -33,9 +34,9 @@ window.addEventListener('DOMContentLoaded', function onReadyHandler () {
           // Close it up once "win" condition is achieved
           if (cardCount >= cardLimit || kingCount >= kingLimit) {
             clearInterval(loopInterval);
-            alert('Finished!')
+            alert('Finished!');
           } else {
-            deckService.drawTwoCards(deckId)
+            deckService.drawCards(deckId, numCardsToDraw)
             .then( (cards) => {
               cards.map( card => {
 
