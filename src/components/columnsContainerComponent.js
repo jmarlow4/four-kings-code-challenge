@@ -5,6 +5,7 @@ export class ColumnsContainerComponent extends HTMLElement {
       display: flex;
       flex-direction: row;
       justify-content: space-evenly;
+      margin-top: 40px;
       align-items: stretch;
     }`
   

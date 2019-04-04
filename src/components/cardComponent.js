@@ -9,7 +9,8 @@ export class CardComponent extends HTMLElement {
 
   connectedCallback () {
     const _styles = `{
-      padding: 8px 16px;
+      line-height: 1.5rem;
+      padding: 10px 16px;
       margin: 8px 16px;
       background-color: #fff;
       box-shadow: 0px 3px 3px -2px #888;

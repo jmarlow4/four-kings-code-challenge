@@ -11,8 +11,7 @@ export class CardColumnComponent extends HTMLElement {
       flex-direction: column;
       align-items: stretch;
       padding: 16px;
-      margin: 16px;
-      width: 100%;
+      width: 20%;
     }
     .suit {
       display: flex;
